@@ -1,0 +1,20 @@
+{
+  "customerName": "Mohamad Lawand",
+  "email": "mohamad@example.com",
+  "items": [
+    {
+      "productId": "P1001",
+      "quantity": 3
+    },
+    {
+      "productId": "P2005",
+      "quantity": 1
+    },
+    {
+      "productId": "P3010",
+      "quantity": 2
+    }
+  ],
+  "totalAmount": 745.50,
+  "orderDate": "2025-03-14"
+}
