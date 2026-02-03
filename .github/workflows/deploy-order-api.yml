@@ -8,6 +8,7 @@ on:
             - 'order-api-function/**'
             - '.github/workflows/deploy-order-api.yml'
     workflow_dispatch: # allow manual execution
+    
 jobs:
     deploy-order-api:
         name: Deploy Order API Function
