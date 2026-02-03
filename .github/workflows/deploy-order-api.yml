@@ -1,0 +1,40 @@
+name: Deploy order API function
+
+    on:
+        push:
+            branches:
+                - main
+            paths:
+                - 'order-api-function/**'
+                - '.github/workflows/deploy-order-api.yml'
+        workflow_dispatch: # allow manual execution
+    jobs:
+        deploy-order-api:
+            name: Deploy Order API Function
+            runs-on: ubuntu-22.04
+
+            steps:
+                - name: Checkout code
+                  uses: actions/checkout@v3
+                
+                - name: Setup Python
+                  uses: actions/setup-python@v4
+                  with:
+                    python-version: '3.11'
+
+                - name: Create a virtual environment
+                  run: |
+                    python -m venv venv
+                    source .venv/bin/activate
+
+                - name: Install dependencies
+                  run: |
+                    cd order-api-function
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt
+
+                
+
+
+
+
