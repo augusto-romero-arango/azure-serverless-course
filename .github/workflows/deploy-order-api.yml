@@ -41,6 +41,6 @@ jobs:
                 publish-profile: ${{ secrets.ORDER_API_AZURE_FUNCTION_APP_PUBLISH_PROFILE }}
                 package: './order-api-function'
                 scm-do-build-during-deployment: true
-                anable-oryx-build: true
+                enable-oryx-build: true
 
 
