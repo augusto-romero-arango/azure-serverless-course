@@ -60,13 +60,13 @@ locals {
     "AppServicePlatformLogs"
   ])
 
-  available_logs = toset(data.azurerm_monitor_diagnostic_categories.func.azurerm_monitor_diagnostic_categories[*].name)
+  available_logs = toset(data.azurerm_monitor_diagnostic_categories.func.log_category_types)
   enabled_logs = setintersection(local.desired_logs, local.available_logs)
 
   desired_metrics = toset([
     "AllMetrics"
   ])
-  available_metrics = toset(data.azurerm_monitor_diagnostic_categories.func.azurerm_monitor_diagnostic_categories[*].name)
+  available_metrics = toset(data.azurerm_monitor_diagnostic_categories.func.metric_category_types)
   enabled_metrics = setintersection(local.desired_metrics, local.available_metrics)
 
 
@@ -83,10 +83,10 @@ resource "azurerm_monitor_diagnostic_setting" "func_to_law" {
       category = enabled_log.value
     }
   }
-  dynamic "enabled_metric" {
+  dynamic "metric" {
     for_each = local.enabled_metrics
     content {
-      category = enabled_metric.value
+      category = enabled_metrics.value
     }
   }
 
