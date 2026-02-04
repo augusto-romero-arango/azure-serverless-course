@@ -8,7 +8,6 @@ resource "azurerm_storage_account" "file_storage" {
 
 resource "azurerm_storage_container" "receipts" {
   name                  = "receipts"
-  storage_account_id = azurerm_storage_account.file_storage.id
   storage_account_name = azurerm_storage_account.file_storage.name
   container_access_type = "private"
 }
