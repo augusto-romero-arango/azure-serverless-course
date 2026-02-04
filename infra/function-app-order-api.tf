@@ -40,6 +40,9 @@ resource "azurerm_linux_function_app" "order-api-func" {
 
     APPLICATIONINSIGHTS_CONNECTION_STRING = azurerm_application_insights.app_insights.connection_string
     APPLICATIONINSIGHTSAGENT_EXTENSION_VERSION = "~3"
+
+    SERVICE_BUS_CONNECTION_STRING = azurerm_servicebus_namespace_authorization_rule.auth_rule.primary_connection_string
+    SERVICE_BUS_QUEUE_NAME = azurerm_servicebus_queue.order_queue.name
   }
 
   tags = { 
