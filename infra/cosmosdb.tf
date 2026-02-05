@@ -22,7 +22,7 @@ resource "azurerm_cosmosdb_account" "main" {
 
 
 resource "azurerm_cosmosdb_sql_database" "order_db" {
-  name                = "oreders-db"
+  name                = "orders-db"
   resource_group_name = azurerm_resource_group.main.name
   account_name        = azurerm_cosmosdb_account.main.name
 
