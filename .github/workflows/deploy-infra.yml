@@ -42,9 +42,9 @@ jobs:
 
             - name: Terraform Plan
               working-directory: ./infra
-              run: terraform plan -out=tfplan -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "resource_group_name=${{ secrets.AZURE_RESOURCE_GROUP_NAME }}"
+              run: terraform plan -out=tfplan -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}"
 
             - name: Terraform Apply
               working-directory: ./infra
-              run: terraform apply -auto-approve tfplan -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "resource_group_name=${{ secrets.AZURE_RESOURCE_GROUP_NAME }}"
+              run: terraform apply -auto-approve tfplan -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}"
 
