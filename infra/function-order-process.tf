@@ -25,6 +25,10 @@ resource "azurerm_linux_function_app" "order_process" {
         APPLICATIONINSIGHTSAGENT_EXTENSION_VERSION = "~3"
 
         SERVICE_BUS_CONNECTION_STRING = azurerm_servicebus_namespace_authorization_rule.listen_rule.primary_connection_string
+
+
+
+        ReceiptStorageConnectionString = azurerm_storage_account.file_storage.primary_connection_string
     }
 }
 
