@@ -1,0 +1,42 @@
+name: Deploy Order Process Function
+on:
+    push:
+        paths:
+            - 'order-processor-function/**'
+            - '.github/workflows/deploy-order-process-func.yml'
+    workflow_dispatch: # Allow manual triggering of the workflow
+
+jobs:
+    deploy-order-process:
+        name: Deploy Order Process Function
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+            
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v3
+              with:
+                  dotnet-version: '9.0.x'
+            
+            - name: Restore dependencies
+              working-directory: ./order-processor-function
+              run: |
+                  dotnet restore
+
+            - name: Build project
+              working-directory: ./order-processor-function
+              run: |
+                  dotnet build --configuration Release --no-restore 
+            
+            - name: Publish project
+              working-directory: ./order-processor-function
+              run: |
+                  dotnet publish --configuration Release --no-build -o ./publish
+
+            - name: Deploy to Azure Function
+              uses: azure/functions-action@v1
+              with:
+                app-name: 'order-processor-development'
+                package: './order-processor-function/publish'
+                publish-profile: ${{ secrets.ORDER_PROCESS_AZURE_FUNCTION_PUBLISH_PROFILE }}    
