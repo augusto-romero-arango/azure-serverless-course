@@ -20,6 +20,4 @@ resource "azurerm_cosmosdb_account" "main" {
   }
 }
 
-resource "azure"
-
 
