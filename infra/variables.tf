@@ -15,3 +15,8 @@ variable "environment" {
   type = string
   default = "development"
 }
+
+variable "subscription_id" {
+  description = "Azure Subscription ID"
+  type = string
+}
