@@ -17,7 +17,7 @@ resource "azurerm_linux_function_app" "order_process" {
   app_settings = { 
         FUNCTIONS_WORKER_RUNTIME =  "dotnet-isolated"
         AzureWebJobsStorage = azurerm_storage_account.main.primary_connection_string
-        blobContainerName = azurerm_storage_container.receipts.name
+        BlobContainerName = azurerm_storage_container.receipts.name
         WEBSITE_RUN_FROM_PACKAGE = "1"
 
         APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.order_processor_ai.instrumentation_key
