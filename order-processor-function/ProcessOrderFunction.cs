@@ -19,7 +19,7 @@ public class ProcessOrderFunction
 
     [Function(nameof(ProcessOrderFunction))]
     public async Task Run(
-        [ServiceBusTrigger("notification_queue", Connection = "ServiceBusConnectionString")]
+        [ServiceBusTrigger("notification_queue", Connection = "SERVICE_BUS_CONNECTION_STRING")]
         ServiceBusReceivedMessage message,
         ServiceBusMessageActions messageActions)
     {
@@ -33,7 +33,7 @@ public class ProcessOrderFunction
         };
         var orderInfo = JsonSerializer.Deserialize<OrderModel>(message.Body.ToString(), options);
 
-        var orderDetailInfo = @"Order Details:
+        var orderDetailInfo = $@"Order Details:
             Customer Name: {orderInfo.CustomerName}
             Email: {orderInfo.Email}
             Order Date: {orderInfo.OrderDate}
