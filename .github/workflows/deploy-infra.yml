@@ -22,12 +22,16 @@ jobs:
               uses: hashicorp/setup-terraform@v3
               with:
                     terraform_version: 1.14.4
-
+            
             - name: Azure Authentication
               uses: azure/login@v2
               with:
                     creds: ${{ secrets.AZURE_CREDENTIALS }}
-            
+
+            - name: Terraform Init Upgrade
+              working-directory: ./infra
+              run: terraform init -upgrade -reconfigure
+
             - name: Terraform Init
               working-directory: ./infra
               run: terraform init
