@@ -15,7 +15,7 @@ resource "azurerm_servicebus_queue" "order_queue" {
 
 resource "azurerm_servicebus_queue" "dlq" {
   name = "notifications-dlq"
-  namespace_id = ""
+  namespace_id = azurerm_servicebus_namespace.namespace.id
 }
 
 resource "azurerm_servicebus_namespace_authorization_rule" "auth_rule" {
