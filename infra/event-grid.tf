@@ -1,5 +1,5 @@
 resource "azurerm_eventgrid_event_subscription" "file_uploaded" {
-  name  = "file-uploaded.subscription-${var.environment}"
+  name  = "file-uploaded-subscription-${var.environment}"
   scope = azurerm_storage_account.file_storage.id
 
   included_event_types = ["Microsoft.Storage.BlobCreated"]
